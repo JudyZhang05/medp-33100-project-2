@@ -1,10 +1,13 @@
 ## **Project Overview**
 
+- [FIGMA LINK TO TOPIC IDEAS](https://www.figma.com/design/bbmSmSHDFp9uXzHssmW2Ey/MEDP331?node-id=21-2&node-type=canvas&t=Y1FCa60Xxhr3wuQR-0) (ADD/EDIT WHAT YOU WISH)
 - Briefly describe the concept of your project.
 
 ## **Project Members**
 
-- List the people a part of this group.
+- Judy Zhang
+- Abdul Mohammed
+- Hana Rodriguez
 
 ## **Features**
 
