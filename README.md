@@ -36,4 +36,5 @@
 ## **MVP**
 
 - Priority 0 - connecting api to server
-- Prioirty 1 - 
+- Prioirty 1 - 3 interactions
+- Priority 1 - 
