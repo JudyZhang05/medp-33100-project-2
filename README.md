@@ -32,3 +32,9 @@
 ## **Future Enhancements**
 
 - List any future enhancements you would like to make or improve given more time.
+
+## **MVP**
+
+- Priority 0 - connecting api to server
+- Prioirty 1 - 3 interactions
+- Priority 1 - 
