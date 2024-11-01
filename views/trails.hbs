@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trails</title>
+    <link rel='stylesheet' href='/stylesheets/trailStyle.css' />
 </head>
 <body>
-    <ul>
+    <button id="sortButton">Sort</button>   {{!Sorting range: Original, A-Z, Z-A, Most trails, Least trails}}
+    <ul id="box">
         {{#each trails}}
         <li>
             <p>{{this}}</p>
         </li>
         {{/each}}
     </ul>
+    <script src="/javascripts/trailScript.js"></script>
+    <script>
+        let parks = [{{#each trails}} "{{this}}", {{/each}}];
+    </script>
 </body>
 </html>
