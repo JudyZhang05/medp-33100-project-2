@@ -22,7 +22,7 @@ fetch(API_URL)
                     'name': trail.park_name
                     ,'amount': 1
                 });
-            }else if(parksName.includes(trail.park_name) && trail.park_name != undefined){
+            }else if(parksName.includes(trail.park_name) && trail.park_name != undefined){  //counts amount of trails in each park
                 for (let i = 0; i < parks.length; i++){
                     if(parks[i]['name'] === trail.park_name){
                         parks[i]['amount'] += 1;
