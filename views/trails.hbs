@@ -9,15 +9,16 @@
 <body>
     <button id="sortButton">Sort</button>   {{!Sorting range: Original, A-Z, Z-A, Most trails, Least trails}}
     <ul id="box">
-        {{#each trails}}
+        {{#each parks}}
         <li>
-            <p>{{this}}</p>
+            <p>{{this.name}}</p>
         </li>
         {{/each}}
     </ul>
     <script src="/javascripts/trailScript.js"></script>
     <script>
-        let parks = [{{#each trails}} "{{this}}", {{/each}}];
+        let parks = [{{#each parks}} "{{this.name}}", {{/each}}];
+        let amount = [{{#each parks}} "{{this.amount}}", {{/each}}]
     </script>
 </body>
 </html>
