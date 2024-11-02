@@ -39,8 +39,20 @@
         </div>
       </div>
       <div class='park-information'>
+
+        {{#each parks}}
+          <div>
+            <div class='park-image'>Image</div>
+            <div class='park-name'>
+              <h3>{{this.name}}</h3>
+              <p>Learn more</p>
+            </div>
+          </div>
+        {{/each}}
+
+
         {{! Should be generated using the api. Just for show :) }}
-        <div>
+        {{!-- <div>
           <div class='park-image'>Image</div>
           <div class='park-name'>
             <h3>Park Name</h3>
@@ -81,11 +93,13 @@
             <h3>Park Name</h3>
             <p>Learn more</p>
           </div>
-        </div>
-      </div>
+        </div>--}}
+      </div> 
       <div class='load-more'>
         <button>Load More</button>
       </div>
     </section>
+
+    
   </body>
 </html>
