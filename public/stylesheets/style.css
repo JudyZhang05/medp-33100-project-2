@@ -11,24 +11,28 @@
 
 body {
   display: grid;
-  grid-template-rows: 410px;
+  grid-template-rows: 80vh;
 }
 
-.border {
+.border,
+section {
   padding: 0 50px;
 }
 
 header,
 .nav-bar,
 .nav-links,
-.home-information {
+.home-information,
+.search-section {
   display: flex;
 }
 
 header {
-  border: solid;
+  color: white;
+  background-color: green;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: 20px;
 }
 
 .nav-bar {
@@ -46,7 +50,8 @@ header {
   gap: 10px;
 }
 
-.home-information {
+.home-information,
+.search-section {
   justify-content: space-between;
   align-items: center;
 }
@@ -56,11 +61,62 @@ header {
 }
 
 .join-today-button > button {
+  border: solid white;
+  color: white;
   background: none;
   padding: 5px 20px;
   border-radius: 10px;
 }
 
+.basic-park-information {
+  padding: 40px 50px;
+}
+
+.search-section > input {
+  width: 30vw;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+}
+
+.sort-by-section > label,
+#sort-by {
+  font-size: 1.5rem;
+}
+
+.park-information {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 30px auto;
+  gap: 30px;
+}
+
+.park-image {
+  text-align: center;
+  background-color: lightgray;
+  height: 300px;
+}
+
+.park-name {
+  padding: 5px;
+  color: white;
+  background-color: black;
+}
+
+.park-name > h3 {
+  font-size: 1.2rem;
+}
+
+.load-more {
+  text-align: center;
+}
+
+.load-more > button {
+  font-size: 1.5rem;
+  width: 400px;
+}
+
 a {
-  color: #00b7ff;
+  color: white;
+  /* color: #00b7ff; */
 }
