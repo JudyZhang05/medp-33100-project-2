@@ -2,13 +2,6 @@ var express = require('express');
 var router = express.Router();
 const fs = require('fs');
 
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', {});
-// });
-
-// module.exports = router;
-
 const API_URL = 'https://data.cityofnewyork.us/resource/vjbm-hsyr.json';
 let parksName = []
 let parks = []
