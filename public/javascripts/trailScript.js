@@ -2,9 +2,9 @@ const sortButton = document.querySelector('#sortButton');
 
 let sortType = 0;
 let newParks = [];
-let parksQuantity = []
 
 function sortQuantity(){
+    let parksQuantity = []
     for (let i = 0; i < parks.length; i++){
         parksQuantity.push({
             'name': parks[i]
@@ -38,7 +38,6 @@ sortButton.addEventListener('click', () => {
 
     //shuffle through amount of sorting methods
     sortType < 4 ? sortType++ : sortType = 0; 
-    console.log(sortType)
 
     //update webpage to sorted method
     const container = document.querySelector("#box");
