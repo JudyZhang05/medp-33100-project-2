@@ -1,8 +1,6 @@
-const sortButton = document.querySelector('#sortButton');
+const sortMethod = document.querySelector('#sort-by');
 
-let sortType = 0;
 let newParks = [];
-
 function sortQuantity(){
     let parksQuantity = []
     for (let i = 0; i < parks.length; i++){
@@ -12,7 +10,7 @@ function sortQuantity(){
         });      
     }
     parksQuantity.sort((a,b) => {   //sorts highest to lowest amount of trails
-        if(sortType == 2){
+        if(sortMethod.value == "Ascending Quantity"){
             return b.amount-a.amount;
         }else{
             return a.amount-b.amount;
@@ -22,35 +20,55 @@ function sortQuantity(){
 }
 
 function sortParks(){   //sorting methods
-    if(sortType == 0){
-        newParks = parks.toSorted()
-    }else if(sortType == 1){
-        newParks = parks.toSorted().reverse()
-    }else if(sortType == 2 || sortType == 3){
-        sortQuantity()
-    }else if(sortType == 4){
+    if(sortMethod.value == "Default"){
         newParks = parks;
+    }else if(sortMethod.value == "Ascending Alphabet"){
+        newParks = parks.toSorted()
+    }else if(sortMethod.value == "Descending Alphabet"){
+        newParks = parks.toSorted().reverse()
+    }else if(sortMethod.value == "Ascending Quantity" || sortMethod.value == "Descending Quantity" ){
+        sortQuantity()
     }
 }
 
-sortButton.addEventListener('click', () => {
-    sortParks()
+sortMethod.addEventListener('click', () => {
+    
+    sortMethod.addEventListener('change', () => {
+        sortParks()
 
-    //shuffle through amount of sorting methods
-    sortType < 4 ? sortType++ : sortType = 0; 
+        //update webpage to sorted method
+        const container = document.querySelector(".park-information");
+        container.innerHTML = '';
+        newParks.forEach((park) => {
 
-    //update webpage to sorted method
-    const container = document.querySelector("#box");
-    container.innerHTML = '';
-    newParks.forEach((park) => {
-        const liEl = document.createElement('li');
-        const pEl = document.createElement('p');
-        if(sortType === 3 || sortType === 4){
-            pEl.innerHTML = park.name  
-        }else{
-            pEl.innerHTML = park;
-        }
-        liEl.appendChild(pEl);
-        container.appendChild(liEl);
-    });
+            const boxDiv = document.createElement('div');
+            boxDiv.classList.add('container');
+            
+            const imgDiv = document.createElement('div');
+            imgDiv.classList.add('park-image');
+            imgDiv.innerText="Image"
+
+            const nameDiv = document.createElement('div');
+            nameDiv.classList.add('park-name');
+
+            const nameH = document.createElement('h3');
+            const descP = document.createElement('p');
+            descP.innerText = "Learn more"
+
+            if(sortMethod.value == "Ascending Quantity" || sortMethod.value == "Descending Quantity"){
+                nameH.innerHTML = park.name  
+            }else{
+                nameH.innerHTML = park;
+            }
+
+            container.appendChild(boxDiv);
+            boxDiv.appendChild(imgDiv);
+            boxDiv.appendChild(nameDiv);
+            nameDiv.appendChild(nameH);
+            nameDiv.appendChild(descP);
+        });
+
+    })
+
+
 });
