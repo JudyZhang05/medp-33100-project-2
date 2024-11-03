@@ -1,9 +1,14 @@
 const sortMethod = document.querySelector('#sort-by');
 const searchBar = document.querySelector('#search-bar');
+const rarrow = document.querySelector('.right');
+const larrow = document.querySelector('.left');
 
 let searchOpt = false;
 let searchParks = [];
 let newParks = [];
+let parkLoadFrom = 0;
+let parkLoadTo = 6;
+
 function sortQuantity(parkList){
     let parksQuantity = []
     for (let i = 0; i < parkList.length; i++){
@@ -30,11 +35,7 @@ function sortQuantity(parkList){
 }
 
 function sortParks(parkList){   //sorting methods
-    if(searchOpt === false){
-        parkList = parks;
-    }else{
-        parkList = searchParks;
-    }
+    (searchOpt === false) ? parkList = parks : parkList = searchParks;
     if(sortMethod.value === "Default"){
         loadParks(parkList)
     }else if(sortMethod.value === "Ascending Alphabet"){
@@ -46,12 +47,22 @@ function sortParks(parkList){   //sorting methods
     }
 }
 
+
+function setListCount(){
+    parkLoadFrom = 0;
+    parkLoadTo = 6;
+}
+
 function loadParks(parkList){
     //update webpage to sorted method
     const container = document.querySelector(".park-information");
     container.innerHTML = '';
-    parkList.forEach((park) => {
 
+    if(parkLoadTo > parkList.length){
+        parkLoadTo = parkList.length
+    }
+
+    for(let load = parkLoadFrom; load < parkLoadTo; load++){    //update only 6 at a time
         const boxDiv = document.createElement('div');
         boxDiv.classList.add('container');
         
@@ -67,9 +78,9 @@ function loadParks(parkList){
         descP.innerText = "Learn more"
 
         if(sortMethod.value == "Ascending Quantity" || sortMethod.value == "Descending Quantity"){
-            nameH.innerHTML = park.name; 
+            nameH.innerHTML = parkList[load].name; 
         }else{
-            nameH.innerHTML = park;
+            nameH.innerHTML = parkList[load];
         }
 
         container.appendChild(boxDiv);
@@ -77,24 +88,27 @@ function loadParks(parkList){
         boxDiv.appendChild(nameDiv);
         nameDiv.appendChild(nameH);
         nameDiv.appendChild(descP);
-    });
+    }
 }
 
 //Sorting method selection options
 sortMethod.addEventListener('click', () => {
     sortMethod.addEventListener('change', () => {
+        setListCount()
         if(searchOpt === true){
             sortParks(searchParks)
         }else{
-            newParks = parks;
-            sortParks(newParks);
+            newParks = parks; //don't need newparks
+            sortParks(parks);
         }
     })
 });
 
+
 //Search method
 searchBar.addEventListener('click', () => {
     searchBar.addEventListener('keydown',(event) => {
+        setListCount()
         if(searchBar.value.length > 0 && event.key === "Enter"){
             searchOpt = true;
             searchParks = []
@@ -107,11 +121,28 @@ searchBar.addEventListener('click', () => {
         }
     })
 });
-
 searchBar.addEventListener('change', () => {
     if (searchBar.value.length === 0){   //resets searched parks
         searchOpt = false;
         searchParks = parks; 
         sortParks(searchParks)
     }
-})
+});
+
+//arrows
+rarrow.addEventListener('click', () => {
+    parkLoadFrom+=6;
+    parkLoadTo+=6;
+    
+    if(searchOpt === true){
+        if(parkLoadTo > searchParks.length){
+            setListCount()
+        }
+        sortParks(searchParks)
+    }else{
+        if(parkLoadTo > parks.length){
+            setListCount()
+        }
+        sortParks(parks)
+    }
+});

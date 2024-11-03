@@ -12,9 +12,9 @@
         <h3>Park Trails</h3>
         <div class='nav-links'>
           {{! links fill in later }}
-          <a href='#'>link one</a>
-          <a href='#'>link two</a>
-          <a href='#'>link three</a>
+          <a href='#'>Parks</a>
+          <a href='#'>About</a>
+          <a href='#'>Login</a>
         </div>
       </div>
       <div class='home-information border'>
@@ -37,8 +37,8 @@
             <option value='Default'>None</option>
             <option value='Ascending Alphabet'>A-Z</option>
             <option value='Descending Alphabet'>Z-A</option>
-            <option value='Ascending Quantity'>Highest</option>
-            <option value='Descending Quantity'>Lowest</option>
+            <option value='Ascending Quantity'>Most Trails</option>
+            <option value='Descending Quantity'>Least Trails</option>
 
             {{! Add more options to dropdown later}}
           </select>
@@ -47,7 +47,7 @@
       <div class='outer'>
         <div class='inner'>
           <div class='park-information'>
-            {{#each parks}}
+            {{!-- {{#each parks}}
               <div class='container'>
                 <div class='park-image'>Image</div>
                 <div class='park-name'>
@@ -55,7 +55,7 @@
                   <p>Learn more</p>
                 </div>
               </div>
-            {{/each}}
+            {{/each}} --}}
           </div>
         </div>
         <img
@@ -75,9 +75,9 @@
 
     <script src='/javascripts/trailScript.js'></script>
     <script>
-      let parks = [{{#each parks}} "{{this.name}}", {{/each}}]; let amount = [{{#each
-        parks
-      }} "{{this.amount}}", {{/each}}]
+      let parks = [{{#each parks}} "{{this.name}}", {{/each}}]; 
+      let amount = [{{#each parks}} "{{this.amount}}", {{/each}}];
+      loadParks(parks);
     </script>
   </body>
 </html>
