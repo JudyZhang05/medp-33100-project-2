@@ -28,7 +28,7 @@
       {{! for search bar and sort by }}
       <div class='search-section'>
         {{! search bar }}
-        <input type='text' placeholder='Search' id="search-bar"/>
+        <input type='text' placeholder='Search' id='search-bar' />
         {{! sort by }}
 
         <div class='sort-by-section'>
@@ -45,25 +45,16 @@
         </div>
       </div>
       <div class='outer'>
-        <div class='inner'>
-          <div class='park-information'>
-            {{!-- {{#each parks}}
-              <div class='container'>
-                <div class='park-image'>Image</div>
-                <div class='park-name'>
-                  <h3>{{this.name}}</h3>
-                  <p>Learn more</p>
-                </div>
-              </div>
-            {{/each}} --}}
-          </div>
-        </div>
         <img
           src='/stylesheets/arrow-left.svg'
           class='arrow left'
           alt=''
           width='50px'
         />
+        <div class='inner'>
+          <div class='park-information'>
+          </div>
+        </div>
         <img
           src='/stylesheets/arrow-right.svg'
           class='arrow right'
@@ -75,9 +66,9 @@
 
     <script src='/javascripts/trailScript.js'></script>
     <script>
-      let parks = [{{#each parks}} "{{this.name}}", {{/each}}]; 
-      let amount = [{{#each parks}} "{{this.amount}}", {{/each}}];
-      loadParks(parks);
+      let parks = [{{#each parks}} "{{this.name}}", {{/each}}]; let amount = [{{#each
+        parks
+      }} "{{this.amount}}", {{/each}}]; loadParks(parks);
     </script>
   </body>
 </html>

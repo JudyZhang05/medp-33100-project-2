@@ -86,29 +86,18 @@ header {
 .outer {
   overflow: hidden;
   display: flex;
-  width: 67vw;
+  gap: 40px;
+  width: 80vw;
   margin: auto;
 }
 
-.arrow {
-  position: absolute;
-  top: 145vh;
-}
-
-.left {
-  left: 150px;
-}
-
-.right {
-  right: 150px;
-}
 .inner {
   width: 500vw;
 }
 
 .park-information {
   display: grid;
-  grid-template-columns: repeat(28, 300px);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   margin: 30px auto;
   gap: 30px;
