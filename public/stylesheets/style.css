@@ -23,7 +23,8 @@ header,
 .nav-bar,
 .nav-links,
 .home-information,
-.search-section {
+.search-section,
+.search-section > div {
   display: flex;
 }
 
@@ -76,7 +77,18 @@ header {
   padding: 40px 50px;
 }
 
-.search-section > input {
+.search-section > div:first-child {
+  border: solid;
+}
+
+.search-section > div {
+  align-items: center;
+  gap: 5px;
+  border-radius: 5px;
+}
+
+.search-section > div > input {
+  border: none;
   width: 30vw;
   font-size: 1.5rem;
   padding: 5px 10px;
