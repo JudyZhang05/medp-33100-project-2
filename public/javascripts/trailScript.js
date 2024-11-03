@@ -4,13 +4,20 @@ const searchBar = document.querySelector('#search-bar');
 let searchOpt = false;
 let searchParks = [];
 let newParks = [];
-function sortQuantity(){
+function sortQuantity(parkList){
     let parksQuantity = []
-    for (let i = 0; i < parks.length; i++){
-        parksQuantity.push({
-            'name': parks[i]
-            ,'amount': amount[i]
-        });      
+    for (let i = 0; i < parkList.length; i++){
+        if(searchOpt === true && searchParks.includes(parkList[i])){    //searched parks list
+            parksQuantity.push({
+                'name': parkList[i]
+                ,'amount': amount[i]
+            })
+        }else if(searchOpt === false){
+            parksQuantity.push({
+                'name': parkList[i]
+                ,'amount': amount[i]
+            });  
+        }
     }
     parksQuantity.sort((a,b) => {   //sorts highest to lowest amount of trails
         if(sortMethod.value == "Ascending Quantity"){
@@ -19,18 +26,23 @@ function sortQuantity(){
             return a.amount-b.amount;
         }
     })
-    newParks = parksQuantity;
+    loadParks(parksQuantity);
 }
 
-function sortParks(){   //sorting methods
-    if(sortMethod.value == "Default"){
-        newParks = parks;
-    }else if(sortMethod.value == "Ascending Alphabet"){
-        newParks = parks.toSorted()
-    }else if(sortMethod.value == "Descending Alphabet"){
-        newParks = parks.toSorted().reverse()
-    }else if(sortMethod.value == "Ascending Quantity" || sortMethod.value == "Descending Quantity" ){
-        sortQuantity()
+function sortParks(parkList){   //sorting methods
+    if(searchOpt === false){
+        parkList = parks;
+    }else{
+        parkList = searchParks;
+    }
+    if(sortMethod.value === "Default"){
+        loadParks(parkList)
+    }else if(sortMethod.value === "Ascending Alphabet"){
+        loadParks(parkList.toSorted())
+    }else if(sortMethod.value === "Descending Alphabet"){
+        loadParks(parkList.toSorted().reverse())
+    }else if(sortMethod.value === "Ascending Quantity" || sortMethod.value === "Descending Quantity" ){
+        sortQuantity(parkList)
     }
 }
 
@@ -55,7 +67,7 @@ function loadParks(parkList){
         descP.innerText = "Learn more"
 
         if(sortMethod.value == "Ascending Quantity" || sortMethod.value == "Descending Quantity"){
-            nameH.innerHTML = park.name  
+            nameH.innerHTML = park.name; 
         }else{
             nameH.innerHTML = park;
         }
@@ -71,32 +83,35 @@ function loadParks(parkList){
 //Sorting method selection options
 sortMethod.addEventListener('click', () => {
     sortMethod.addEventListener('change', () => {
-        sortParks()
         if(searchOpt === true){
-            loadParks(searchParks) //fix
+            sortParks(searchParks)
         }else{
-            loadParks(newParks)
+            newParks = parks;
+            sortParks(newParks);
         }
     })
 });
 
 //Search method
 searchBar.addEventListener('click', () => {
-    searchBar.addEventListener('keypress',(event) => {
+    searchBar.addEventListener('keydown',(event) => {
         if(searchBar.value.length > 0 && event.key === "Enter"){
             searchOpt = true;
             searchParks = []
             parks.forEach((parkName) => {
-                if(parkName.toLowerCase().includes(searchBar.value.toLowerCase())){
+                if(parkName.toLowerCase().includes(searchBar.value.toLowerCase())){ //makes list of searched parks
                     searchParks.push([parkName])
                 }
             })
-            loadParks(searchParks) 
-        }else if (searchBar.value.length === 0 && event.key === "Enter"){
-            searchOpt = false;
-            searchParks = parks; 
-            sortParks()
-            loadParks(searchParks) //Fix dictionary searchparks needs to be a list of dictionary Movie :partytime:
+            sortParks(searchParks)
         }
     })
 });
+
+searchBar.addEventListener('change', () => {
+    if (searchBar.value.length === 0){   //resets searched parks
+        searchOpt = false;
+        searchParks = parks; 
+        sortParks(searchParks)
+    }
+})
