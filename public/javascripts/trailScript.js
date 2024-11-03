@@ -1,12 +1,14 @@
 const sortMethod = document.querySelector('#sort-by');
 const searchBar = document.querySelector('#search-bar');
 const rarrow = document.querySelector('.right');
+const larrow = document.querySelector('.left');
 
 let searchOpt = false;
 let searchParks = [];
 let newParks = [];
 let parkLoadFrom = 0;
 let parkLoadTo = 6;
+let arrow = 1;
 
 function sortQuantity(parkList){
     let parksQuantity = []
@@ -46,9 +48,15 @@ function sortParks(parkList){   //sorting methods
     }
 }
 
-function setListCount(){
-    parkLoadFrom = 0;
-    parkLoadTo = 6;
+function setListCount(direct,parkList){
+    if(direct === true){
+        parkLoadFrom = 0;
+        parkLoadTo = 6;
+    }else{
+        parkLoadTo = parkList.length;
+        parkLoadFrom = parkList.length - 6;
+    }
+    
 }
 
 function loadParks(parkList){
@@ -58,6 +66,8 @@ function loadParks(parkList){
 
     if(parkLoadTo > parkList.length){
         parkLoadTo = parkList.length
+    }else if(parkLoadFrom < 0){
+        parkLoadFrom = 0;
     }
 
     for(let load = parkLoadFrom; load < parkLoadTo; load++){    //update only 6 at a time
@@ -94,11 +104,12 @@ function loadParks(parkList){
 //Sorting method selection options
 sortMethod.addEventListener('click', () => {
     sortMethod.addEventListener('change', () => {
-        setListCount()
         if(searchOpt === true){
             sortParks(searchParks)
+            setListCount(true, searchParks)
         }else{
             sortParks(parks);
+            setListCount(true, parks)
         }
     })
 });
@@ -107,7 +118,7 @@ sortMethod.addEventListener('click', () => {
 //Search method
 searchBar.addEventListener('click', () => {
     searchBar.addEventListener('keydown',(event) => {
-        setListCount()
+        setListCount(true, searchParks)
         if(searchBar.value.length > 0 && event.key === "Enter"){
             searchOpt = true;
             searchParks = []
@@ -135,12 +146,30 @@ rarrow.addEventListener('click', () => {
     
     if(searchOpt === true){
         if(parkLoadTo > searchParks.length){
-            setListCount()
+            setListCount(true,searchParks)
         }
         sortParks(searchParks)
     }else{
         if(parkLoadTo > parks.length){
-            setListCount()
+            setListCount(true,parks)
+        }
+        sortParks(parks)
+    }
+});
+
+//left arrow
+larrow.addEventListener('click', () => {
+    parkLoadFrom-=6;
+    parkLoadTo-=6;
+
+    if(searchOpt === true){
+        if(parkLoadTo <= 0){
+            setListCount(false,searchParks)
+        }
+        sortParks(searchParks)
+    }else{
+        if(parkLoadTo <= 0){
+            setListCount(false,parks)
         }
         sortParks(parks)
     }
