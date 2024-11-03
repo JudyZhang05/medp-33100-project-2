@@ -1,7 +1,6 @@
 const sortMethod = document.querySelector('#sort-by');
 const searchBar = document.querySelector('#search-bar');
 const rarrow = document.querySelector('.right');
-const larrow = document.querySelector('.left');
 
 let searchOpt = false;
 let searchParks = [];
@@ -47,7 +46,6 @@ function sortParks(parkList){   //sorting methods
     }
 }
 
-
 function setListCount(){
     parkLoadFrom = 0;
     parkLoadTo = 6;
@@ -63,8 +61,10 @@ function loadParks(parkList){
     }
 
     for(let load = parkLoadFrom; load < parkLoadTo; load++){    //update only 6 at a time
-        const boxDiv = document.createElement('div');
+
+        const boxDiv = document.createElement('a');
         boxDiv.classList.add('container');
+        boxDiv.href = "./trails";
         
         const imgDiv = document.createElement('div');
         imgDiv.classList.add('park-image');
@@ -98,7 +98,6 @@ sortMethod.addEventListener('click', () => {
         if(searchOpt === true){
             sortParks(searchParks)
         }else{
-            newParks = parks; //don't need newparks
             sortParks(parks);
         }
     })
@@ -129,7 +128,7 @@ searchBar.addEventListener('change', () => {
     }
 });
 
-//arrows
+//right arrow
 rarrow.addEventListener('click', () => {
     parkLoadFrom+=6;
     parkLoadTo+=6;
