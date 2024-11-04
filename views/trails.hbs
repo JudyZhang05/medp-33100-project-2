@@ -1,24 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Trails</title>
     <link rel='stylesheet' href='/stylesheets/trailStyle.css' />
-</head>
-<body>
-    <button id="sortMethod">Sort</button>   {{!Sorting range: Original, A-Z, Z-A, Most trails, Least trails}}
-    <ul id="box">
-        {{#each parks}}
-        <li>
-            <p>{{this.name}}</p>
-        </li>
-        {{/each}}
-    </ul>
-    <script src="/javascripts/trailScript.js"></script>
+  </head>
+  <body>
+    <header>
+      {{! header sections }}
+      <div class='nav-bar border'>
+        <h3>Park Trails</h3>
+        <div class='nav-links'>
+          {{! links fill in later }}
+          <a href='#'>Parks</a>
+          <a href='#'>About</a>
+          <a href='#'>Login</a>
+        </div>
+      </div>
+      <div class='park-information border'>
+        <h1>Park's Official Name
+          <span><img
+              src='/stylesheets/images/information-outline.svg'
+              alt=''
+              width='40px'
+            /></span></h1>
+        <p>Brief Description of Park’s history or some other detail</p>
+      </div>
+    </header>
+    <section class='show-difficulty'>
+      {{! Will show difficulty }}
+    </section>
+    <section class='more-trails-one'>
+      {{! first row of showing more trails (I think) }}
+    </section>
+    <section class='more-trail-two'>
+      {{! second row of showing more trails }}
+    </section>
+    <section class='map'>
+      {{! map section. (You can put the map here) }}
+    </section>
+    <section class='difficulty-bar-graph'>
+      {{! show difficulty bar graph }}
+    </section>
+    <section class='navigate'>
+      {{! navigate to different parks }}
+    </section>
+
+    {{! Not sure if this is needed so I left it }}
+    <script src='/javascripts/trailScript.js'></script>
     <script>
-        let parks = [{{#each parks}} "{{this.name}}", {{/each}}];
-        let amount = [{{#each parks}} "{{this.amount}}", {{/each}}]
+      let parks = [{{#each parks}} "{{this.name}}", {{/each}}]; let amount = [{{#each
+        parks
+      }} "{{this.amount}}", {{/each}}]
     </script>
-</body>
+  </body>
 </html>
