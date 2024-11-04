@@ -43,7 +43,10 @@ section {
 
 header,
 .nav-bar,
-.nav-links {
+.nav-links,
+.map,
+.difficulty-bar-graph,
+.navigate-content {
   display: flex;
 }
 
@@ -81,4 +84,135 @@ a {
 
 .park-information h1 {
   font-size: 5rem;
+}
+
+.show-difficulty {
+  background-color: green;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.show-difficulty > h1 {
+  font-size: 12rem;
+}
+
+.show-difficulty > p {
+  font-size: 2rem;
+}
+
+.more-trails-one {
+  background-color: lightgreen;
+}
+
+.more-trail-two {
+  background-color: #fefae0;
+}
+
+.more-trails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.more-trails > div {
+  width: 80%;
+  height: 80%;
+  background-color: gray;
+}
+
+.map {
+  justify-content: center;
+  align-items: center;
+  background-color: #c4c4c4;
+}
+
+.map > div {
+  background-color: lightgray;
+  width: 80%;
+  height: 60%;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.difficulty-bar-graph,
+.navigate {
+  background-color: #e9edc9;
+}
+
+.difficulty-bar-graph {
+  justify-content: center;
+  border-bottom: solid;
+}
+
+.difficulty-bar-graph,
+.navigate-content {
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.navigate {
+  padding-top: 20px;
+}
+
+.navigate-content {
+  position: sticky;
+  top: 20px;
+}
+
+.difficulty-bar-graph > h2,
+.navigate-content > h2,
+.navigate-content > div > div {
+  font-size: 1.3rem;
+}
+
+.navigate-content > div {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 130%;
+}
+
+.navigate-content > div > div {
+  background-color: lightgray;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.difficulty-bar-graph > div {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  height: 60%;
+}
+
+/* temp  */
+.difficulty-bar-graph > div > div {
+  width: 30px;
+}
+
+.green {
+  background-color: green;
+  height: 90%;
+}
+
+.yellow {
+  background-color: yellow;
+  height: 50%;
+}
+
+.orange {
+  background-color: orange;
+  height: 70%;
+}
+
+.red {
+  background-color: red;
+  height: 40%;
 }
