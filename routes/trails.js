@@ -15,21 +15,7 @@ fetch(API_URL)
         return res.json();
     })
     .then(data => {
-        data.forEach((trail) => {   //Getting all the various parks from the api
-            if (!parksName.includes(trail.park_name) && trail.park_name != undefined){
-                parksName.push(trail.park_name)
-                parks.push({
-                    'name': trail.park_name
-                    ,'amount': 1
-                });
-            }else if(parksName.includes(trail.park_name) && trail.park_name != undefined){  //counts amount of trails in each park
-                for (let i = 0; i < parks.length; i++){
-                    if(parks[i]['name'] === trail.park_name){
-                        parks[i]['amount'] += 1;
-                    }
-                }
-            }
-        });
+        // console.log(data)
     })
     .catch(error => {
         console.error('Error:', error);

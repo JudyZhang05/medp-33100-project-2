@@ -79,11 +79,11 @@
       </div>
     </footer>
 
-    <script src='/javascripts/trailScript.js'></script>
+    <script src='/javascripts/parkScript.js'></script>
     <script>
-      let parks = [{{#each parks}} "{{this.name}}", {{/each}}]; let amount = [{{#each
-        parks
-      }} "{{this.amount}}", {{/each}}]; loadParks(parks);
+      let parks = [{{#each parks}} "{{this.name}}", {{/each}}]; 
+      let amount = [{{#each parks}} "{{this.amount}}", {{/each}}]; 
+      loadParks(parks);
     </script>
   </body>
 </html>

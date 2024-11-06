@@ -2,7 +2,7 @@
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>Trails</title>
+    <title></title>
     <link rel='stylesheet' href='/stylesheets/trailStyle.css' />
   </head>
   <body>
@@ -83,12 +83,9 @@
       </div>
     </section>
 
-    {{! Not sure if this is needed so I left it }}
     <script src='/javascripts/trailScript.js'></script>
     <script>
-      let parks = [{{#each parks}} "{{this.name}}", {{/each}}]; let amount = [{{#each
-        parks
-      }} "{{this.amount}}", {{/each}}]
+      let selectedPark = clickedPark(); 
     </script>
   </body>
 </html>
