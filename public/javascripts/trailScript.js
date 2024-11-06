@@ -21,6 +21,7 @@ function countTrails(){ //count the number of trails in one park
     for (num of parkTrails[parkIndex]){
         numberOfTrails += num;
     }
+    console.log(numberOfTrails)
 }
 
 function decodeHtml() { //ridding parkName list of HTML entities returns new list of parkNames
@@ -30,6 +31,9 @@ function decodeHtml() { //ridding parkName list of HTML entities returns new lis
         newParkName.push(textArea.value.toString())
     }
     parkIndex = newParkName.indexOf(selectedPark)
+    if(parkIndex === -1){
+        parkIndex = parkName.indexOf(selectedPark)
+    }
 }
 
 function setUp(){
@@ -59,9 +63,7 @@ function plotBarGraph(){    //display bar graph
         barcornerradius: 15,
     };
 
-    if(parkIndex != 10){    //filtering out outliar
-        Plotly.newPlot('bar-graph', data, layout, {responsive: true});
-    }
+    Plotly.newPlot('bar-graph', data, layout, {responsive: true});
 
     countTrails()
 }
