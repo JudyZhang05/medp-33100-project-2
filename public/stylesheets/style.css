@@ -72,6 +72,10 @@ header {
   border-radius: 10px;
 }
 
+.container > img {
+  width: 100%;
+}
+
 .basic-park-information {
   padding: 40px 50px;
 }
