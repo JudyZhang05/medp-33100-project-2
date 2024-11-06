@@ -4,6 +4,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title></title>
     <link rel='stylesheet' href='/stylesheets/trailStyle.css' />
+    
+    {{!-- Plotly --}}
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
   </head>
   <body>
     <header>
@@ -32,16 +35,16 @@
       <h1>1</h1>
       <p>Difficulty level description (based off of the API)</p>
     </section>
-    <section class='more-trails-one more-trails'>
+    <section class='more-trails-one more-trails' id="bar-graph">
       {{! first row of showing more trails (I think) }}
+      {{!-- <div></div>
       <div></div>
       <div></div>
       <div></div>
       <div></div>
-      <div></div>
-      <div></div>
+      <div></div> --}}
     </section>
-    <section class='more-trail-two more-trails'>
+    {{!-- <section class='more-trail-two more-trails'>
       {{! second row of showing more trails }}
       <div></div>
       <div></div>
@@ -49,7 +52,7 @@
       <div></div>
       <div></div>
       <div></div>
-    </section>
+    </section> --}}
     <section class='map'>
       {{! map section. (You can put the map here) }}
       <div>You can replace the this div with the map</div>
@@ -59,33 +62,42 @@
       <h2>Park Trails Difficulty</h2>
 
       {{! temp }}
-      <div>
+      {{!-- <div>
         <div class='green'></div>
         <div class='yellow'></div>
         <div class='orange'></div>
         <div class='red'></div>
-      </div>
+      </div> --}}
+
     </section>
     <section class='navigate'>
       {{! navigate to different parks }}
       <div class='navigate-content'>
         <h2>(Navigation) <br /> Other Parks</h2>
-
         {{! temp links }}
         <div>
-          <div>Open Parks (tabs)</div>
+
+          {{!-- limit this amount to 4-5 --}}
+          {{#each trails}}
+            <div>{{@key}}</div>
+          {{/each}}
+
+          {{!-- <div>Open Parks (tabs)</div>
           <div>some link</div>
           <div>some link</div>
           <div>some link</div>
           <div>some link</div>
-          <div>some link</div>
+          <div>some link</div> --}}
         </div>
       </div>
     </section>
 
     <script src='/javascripts/trailScript.js'></script>
     <script>
-      let selectedPark = clickedPark(); 
+      let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
+      let parkTrails = [{{#each trails}} [{{#each this}} {{this}}, {{/each}}], {{/each}}];
+      let difficultyLevels = [{{#each trails_difficulty}} '{{this}}', {{/each}}];
+      plotBarGraph()
     </script>
   </body>
 </html>

@@ -3,7 +3,7 @@ const searchBar = document.querySelector('#search-bar');
 const rarrow = document.querySelector('.right');
 const larrow = document.querySelector('.left');
 
-let clickedPark = '';
+var clickedPark = '';
 let searchOpt = false;
 let searchParks = [];
 let parkLoadFrom = 0;
@@ -70,13 +70,19 @@ function loadParks(parkList){
     }
 
     for(let load = parkLoadFrom; load < parkLoadTo; load++){    //update only 6 at a time
+        let name = ''
+        if(sortMethod.value == "Ascending Quantity" || sortMethod.value == "Descending Quantity"){
+            name = parkList[load].name; 
+        }else{
+            name = parkList[load];
+        }
 
         const boxDiv = document.createElement('div');
         boxDiv.classList.add('container');
         
         const imgDiv = document.createElement('img');
         imgDiv.classList.add('park-image');
-        imgDiv.src = `/images/${parkList[load].toLowerCase()}.jpg`
+        imgDiv.src = `/images/${name.toLowerCase()}.jpg`
 
         const nameDiv = document.createElement('div');
         nameDiv.classList.add('park-name');
@@ -85,11 +91,7 @@ function loadParks(parkList){
         const descP = document.createElement('p');
         descP.innerText = "Learn more"
 
-        if(sortMethod.value == "Ascending Quantity" || sortMethod.value == "Descending Quantity"){
-            nameH.innerHTML = parkList[load].name; 
-        }else{
-            nameH.innerHTML = parkList[load];
-        }
+        nameH.innerHTML = name
 
         container.appendChild(boxDiv);
         boxDiv.appendChild(imgDiv);
@@ -104,12 +106,10 @@ let allParks = document.querySelectorAll('.park-information');
 allParks.forEach((parkTrail) => {
     parkTrail.addEventListener('click', (event) => {
         clickedPark = event.target.parentElement.innerHTML.split('h3>')[1].slice(0,-2);
+        localStorage.setItem('park', clickedPark);
         window.location.href = "./trails";
     })
 })
-
-//!!URGENT -> Send clickedPark to /routes/trails.js
-
 
 //Sorting method selection options
 sortMethod.addEventListener('click', () => {
