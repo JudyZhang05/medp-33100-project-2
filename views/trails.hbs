@@ -47,11 +47,11 @@
         {{! temp links }}
         <div>
           <div>Open Parks (tabs)</div>
-          <div>some link</div>
-          <div>some link</div>
-          <div>some link</div>
-          <div>some link</div>
-          <div>some link</div>
+          <div>Prospect Park</div>
+          <div>Wolfe's Pond Park</div>
+          <div>Highbridge Park</div>
+          <div>Alley Pond Park</div>
+          <div>High Rock Park</div>
         </div>
       </div>
     </div>
@@ -72,6 +72,7 @@
       let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
       let parkTrails = [{{#each trails}} [{{#each this}} {{this}}, {{/each}}], {{/each}}];
       let difficultyLevels = [{{#each trails_difficulty}} '{{this}}', {{/each}}];
+      decodeHtml()
       plotBarGraph()
     </script>
   </body>

@@ -70,11 +70,11 @@ function loadParks(parkList){
     }
 
     for(let load = parkLoadFrom; load < parkLoadTo; load++){    //update only 6 at a time
-        let name = ''
+        let pname = ''
         if(sortMethod.value == "Ascending Quantity" || sortMethod.value == "Descending Quantity"){
-            name = parkList[load].name; 
+            pname = parkList[load].name; 
         }else{
-            name = parkList[load];
+            pname = parkList[load];
         }
 
         const boxDiv = document.createElement('div');
@@ -82,7 +82,7 @@ function loadParks(parkList){
         
         const imgDiv = document.createElement('img');
         imgDiv.classList.add('park-image');
-        imgDiv.src = `/images/${name.toLowerCase()}.jpg`
+        imgDiv.src = `/images/${pname.toLowerCase()}.jpg`
 
         const nameDiv = document.createElement('div');
         nameDiv.classList.add('park-name');
@@ -91,7 +91,7 @@ function loadParks(parkList){
         const descP = document.createElement('p');
         descP.innerText = "Learn more"
 
-        nameH.innerHTML = name
+        nameH.innerHTML = pname
 
         container.appendChild(boxDiv);
         boxDiv.appendChild(imgDiv);
