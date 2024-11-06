@@ -1,5 +1,3 @@
-//URGENT -> GRAPH (plotly)
-
 //Obtain selected park
 let selectedPark = '';
 if (typeof localStorage !== 'undefined') {
@@ -11,10 +9,9 @@ if (typeof localStorage !== 'undefined') {
 const titleEl = document.querySelector('title');
 const parkTitle = document.querySelector('.park-information h1');
 const showDifficulty = document.querySelector('.show-difficulty');
-let otherParks = document.querySelectorAll('.change-park div');
+let otherParks = document.querySelectorAll('.change-content div');
 let newParkName = []
 let parkIndex = -1;
-
 
 function countTrails(){ //count the number of trails in one park
     let numberOfTrails = 0;
@@ -23,11 +20,28 @@ function countTrails(){ //count the number of trails in one park
     }
 }
 
-function setUp() {
+function difficultPark(){
+  console.log(difficultyLevels)
+}
+
+function setUp(){ //setting the webpage
   titleEl.innerHTML = selectedPark;
   parkTitle.innerHTML = selectedPark;
+  decodeHtml()
+  plotBarGraph()
 }
-setUp();
+
+function decodeHtml() { //ridding parkName list of HTML entities returns new list of parkNames
+  let textArea = document.createElement('textarea');
+  for (park of parkName){
+      textArea.innerHTML = park;
+      newParkName.push(textArea.value.toString())
+  }
+  parkIndex = newParkName.indexOf(selectedPark)
+  if(parkIndex === -1){
+      parkIndex = parkName.indexOf(selectedPark)
+  }
+}
 
 function plotBarGraph() {
   let parkIndex = parkName.indexOf(selectedPark);
@@ -55,13 +69,6 @@ function plotBarGraph() {
   Plotly.newPlot('bar-graph', data, layout, { responsive: true });
 }
 
-function setUp(){
-    titleEl.innerHTML = selectedPark;
-    parkTitle.innerHTML = selectedPark;
-
-    plotBarGraph()
-    decodeHtml()
-}
 
 function plotBarGraph(){    //display bar graph
     let trace1 = {
@@ -89,30 +96,32 @@ function plotBarGraph(){    //display bar graph
     countTrails()
 }
 
+console.log('hi')
+
 otherParks.forEach((park) => { //right navigation bar
-    park.addEventListener('click', (event) => {
-        selectedPark = event.target.innerText;
-        setUp()
-    })
+  park.addEventListener('click', (event) => {
+    selectedPark = event.target.innerText;
+    setUp()
+  })
 })
 
 // hide and show map and bar graph
-function barGraphMap() {
-  const allButtons = document.querySelectorAll('.show-button');
-  const allSections = document.querySelectorAll('.sections');
+// function barGraphMap() {
+//   const allButtons = document.querySelectorAll('.show-button');
+//   const allSections = document.querySelectorAll('.sections');
 
-  allButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      allSections.forEach((section) => {
-        section.style.display = 'none';
-      });
+//   allButtons.forEach((button, index) => {
+//     button.addEventListener('click', () => {
+//       allSections.forEach((section) => {
+//         section.style.display = 'none';
+//       });
 
-      if (allSections[index].id === button.id) {
-        allSections[index].style.display = 'block';
-      }
-    });
-  });
-}
+//       if (allSections[index].id === button.id) {
+//         allSections[index].style.display = 'block';
+//       }
+//     });
+//   });
+// }
 
-barGraphMap();
-plotBarGraph();
+// barGraphMap();
+// plotBarGraph();

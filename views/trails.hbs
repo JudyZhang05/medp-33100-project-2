@@ -42,11 +42,10 @@
       <div class="see-more">
       {{! navigate to different parks }}
       <div class='see-more-content'>
-        <h2>(Navigation) <br /> Other Parks</h2>
+        <h2>See More</h2>
 
         {{! temp links }}
-        <div>
-          <div>Open Parks (tabs)</div>
+        <div class="change-content">
           <div>Prospect Park</div>
           <div>Wolfe's Pond Park</div>
           <div>Highbridge Park</div>
@@ -72,8 +71,8 @@
       let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
       let parkTrails = [{{#each trails}} [{{#each this}} {{this}}, {{/each}}], {{/each}}];
       let difficultyLevels = [{{#each trails_difficulty}} '{{this}}', {{/each}}];
-      decodeHtml()
-      plotBarGraph()
+      setUp()
+      difficultPark()
     </script>
   </body>
 </html>

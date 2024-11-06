@@ -1,7 +1,7 @@
 ## **Project Overview**
 
-- [FIGMA LINK TO TOPIC IDEAS](https://www.figma.com/design/bbmSmSHDFp9uXzHssmW2Ey/MEDP331?node-id=21-2&node-type=canvas&t=Y1FCa60Xxhr3wuQR-0) (ADD/EDIT WHAT YOU WISH)
-- Briefly describe the concept of your project.
+- [FIGMA LINK TO TOPIC IDEAS](https://www.figma.com/design/bbmSmSHDFp9uXzHssmW2Ey/MEDP331?node-id=21-2&node-type=canvas&t=Y1FCa60Xxhr3wuQR-0)
+- This website allows users to discover a variety of park trails and helps evaluate the difficulty of the trails in the park.
 
 ## **Project Members**
 
@@ -12,6 +12,9 @@
 ## **Features**
 
 - List the key features of the project (the three distinct types of user interactions).
+- Search for parks
+- Sorting park trails based on alphabetical order and number of trails
+- 
 
 ## **Technologies Used**
 
