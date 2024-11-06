@@ -11,17 +11,17 @@ if(typeof(localStorage) !== 'undefined'){
 
 const titleEl = document.querySelector('title');
 const parkTitle = document.querySelector('.park-information h1');
+const showDifficulty = document.querySelector('.show-difficulty');
+let otherParks = document.querySelectorAll('.change-park div');
 let newParkName = []
 let parkIndex = -1;
-const showDifficulty = document.querySelector('.show-difficulty');
-// const showBarGraph = document.querySelector('.difficulty-bar-graph')
+
 
 function countTrails(){ //count the number of trails in one park
     let numberOfTrails = 0;
     for (num of parkTrails[parkIndex]){
         numberOfTrails += num;
     }
-    console.log(numberOfTrails)
 }
 
 function decodeHtml() { //ridding parkName list of HTML entities returns new list of parkNames
@@ -39,8 +39,10 @@ function decodeHtml() { //ridding parkName list of HTML entities returns new lis
 function setUp(){
     titleEl.innerHTML = selectedPark;
     parkTitle.innerHTML = selectedPark;
+
+    plotBarGraph()
+    decodeHtml()
 }
-setUp()
 
 function plotBarGraph(){    //display bar graph
     let trace1 = {
@@ -67,3 +69,10 @@ function plotBarGraph(){    //display bar graph
 
     countTrails()
 }
+
+otherParks.forEach((park) => {
+    park.addEventListener('click', (event) => {
+        selectedPark = event.target.innerText;
+        setUp()
+    })
+})
