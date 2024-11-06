@@ -97,6 +97,7 @@
       let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
       let parkTrails = [{{#each trails}} [{{#each this}} {{this}}, {{/each}}], {{/each}}];
       let difficultyLevels = [{{#each trails_difficulty}} '{{this}}', {{/each}}];
+      decodeHtml()
       plotBarGraph()
     </script>
   </body>

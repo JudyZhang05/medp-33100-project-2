@@ -11,13 +11,25 @@ if(typeof(localStorage) !== 'undefined'){
 
 const titleEl = document.querySelector('title');
 const parkTitle = document.querySelector('.park-information h1');
-
+let newParkName = []
+let parkIndex = -1;
 const showDifficulty = document.querySelector('.show-difficulty');
 // const showBarGraph = document.querySelector('.difficulty-bar-graph')
 
-function countTrails(){
+function countTrails(){ //count the number of trails in one park
     let numberOfTrails = 0;
-    
+    for (num of parkTrails[parkIndex]){
+        numberOfTrails += num;
+    }
+}
+
+function decodeHtml() { //ridding parkName list of HTML entities returns new list of parkNames
+    let textArea = document.createElement('textarea');
+    for (park of parkName){
+        textArea.innerHTML = park;
+        newParkName.push(textArea.value.toString())
+    }
+    parkIndex = newParkName.indexOf(selectedPark)
 }
 
 function setUp(){
@@ -26,9 +38,7 @@ function setUp(){
 }
 setUp()
 
-function plotBarGraph(){
-    let parkIndex = parkName.indexOf(selectedPark);
-    console.log(parkTrails[parkIndex])
+function plotBarGraph(){    //display bar graph
     let trace1 = {
         x: ['Level 1', 'Level 2', 'Level 3', 'Level 4'],
         y: parkTrails[parkIndex],
@@ -46,12 +56,12 @@ function plotBarGraph(){
         yaxis: {title: 'Quantity'},
         paper_bgcolor: '#FEFAE0',
         plot_bgcolor: '#FEFAE0',
-        // width: 700,  
-        // height: 700,  
-        // margin: {l:20, r:20, t:100, b:20},
         barcornerradius: 15,
     };
 
-    Plotly.newPlot('bar-graph', data, layout, {responsive: true});
+    if(parkIndex != 10){    //filtering out outliar
+        Plotly.newPlot('bar-graph', data, layout, {responsive: true});
+    }
+
+    countTrails()
 }
-plotBarGraph()
