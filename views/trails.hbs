@@ -72,7 +72,6 @@
         const lng = 40.71;
         const zoom = 13;
 
-        // Create map instance
         const map = L.map('map').setView([lat, lng], zoom);
 
         // Add OpenStreetMap tiles
@@ -80,8 +79,7 @@
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-
-        // Optional: Add a marker
+      
         L.marker([lat, lng]).addTo(map)
             .bindPopup('Your location here!')
             .openPopup();
