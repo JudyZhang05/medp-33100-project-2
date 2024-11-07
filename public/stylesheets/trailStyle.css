@@ -52,6 +52,10 @@ header,
   justify-content: space-between;
 }
 
+.nav-title {
+  text-decoration: none;
+}
+
 a {
   color: white;
 }

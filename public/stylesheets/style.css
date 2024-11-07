@@ -46,6 +46,10 @@ header {
   justify-content: space-between;
 }
 
+.nav-title {
+  text-decoration: none;
+}
+
 .nav-bar h3 {
   color: white;
 }
