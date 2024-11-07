@@ -92,11 +92,18 @@ allSections[0].style.display = 'block';
 
 allButtons.forEach((button, index) => {
   button.addEventListener('click', () => {
-    allSections.forEach((section) => {
+    allSections.forEach((section, index) => {
       section.style.display = 'none';
+      allButtons[index].style.backgroundColor = 'lightgray';
     });
     if (allSections[index].id === button.id) {
       allSections[index].style.display = 'block';
+      
+      if (button.id === 'show-bar-graph') {
+        button.style.backgroundColor = 'rgb(254, 250, 224)'
+      } else {
+        button.style.backgroundColor = 'gray';
+      }
     }
   });
 });
