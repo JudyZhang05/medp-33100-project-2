@@ -82,7 +82,7 @@ function loadParks(parkList){
         
         const imgDiv = document.createElement('img');
         imgDiv.classList.add('park-image');
-        imgDiv.src = `/images/${pname.toLowerCase()}.jpg`
+        imgDiv.src = `/images/${pname.toLowerCase().split(' ').join('_')}.jpg`
 
         const nameDiv = document.createElement('div');
         nameDiv.classList.add('park-name');
@@ -155,12 +155,12 @@ rarrow.addEventListener('click', () => {
     parkLoadTo+=6;
     
     if(searchOpt === true){
-        if(parkLoadTo > searchParks.length){
+        if(parkLoadTo-2 > searchParks.length){
             setListCount(true,searchParks)
         }
         sortParks(searchParks)
     }else{
-        if(parkLoadTo > parks.length){
+        if(parkLoadTo-2 > parks.length){
             setListCount(true,parks)
         }
         sortParks(parks)
