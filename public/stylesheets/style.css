@@ -46,6 +46,10 @@ header {
   justify-content: space-between;
 }
 
+.nav-title {
+  text-decoration: none;
+}
+
 .nav-bar h3 {
   color: white;
 }
@@ -70,6 +74,11 @@ header {
   background: none;
   padding: 5px 20px;
   border-radius: 10px;
+}
+
+.container,
+.outer > img {
+  cursor: pointer;
 }
 
 .container > img {
