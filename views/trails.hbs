@@ -45,9 +45,6 @@
 
         {{! temp links }}
         <div class="change-content">
-          {{!-- {{#each trails}} 
-            <div>{{@key}}</div>
-          {{/each}} --}}
           <div>Prospect Park</div>
           <div>Wolfe's Pond Park</div>
           <div>Highbridge Park</div>
@@ -72,9 +69,9 @@
     <script>
       let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
       let parkTrails = [{{#each trails}} [{{#each this}} {{this}}, {{/each}}], {{/each}}];
-      let difficultyLevels = [{{#each trails_difficulty}} '{{this}}', {{/each}}];
+      //let difficultyLevels = [{{#each trails_difficulty}} '{{this}}', {{/each}}];
       setUp()
-      difficultPark()
+      //difficultPark()
     </script>
   </body>
 </html>

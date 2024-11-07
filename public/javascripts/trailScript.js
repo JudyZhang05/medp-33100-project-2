@@ -11,6 +11,7 @@ const parkTitle = document.querySelector('.park-information h1');
 const showDifficulty = document.querySelector('.show-difficulty');
 let otherParks = document.querySelectorAll('.change-content div');
 const trailNum = document.querySelector('.show-difficulty p')
+const bgHeader = document.querySelector('header');
 
 let newParkName = []
 let parkIndex = -1;
@@ -23,7 +24,8 @@ function countTrails(){ //count the number of trails in one park
     trailNum.innerHTML = `Explore ${numberOfTrails} trails in this park!`
 }
 
-function setUp(){ //setting the webpage
+function setUp(){ //setting the webpage 
+  bgHeader.style.backgroundImage = `url(/images/${selectedPark.toString().toLowerCase().split(' ').join('_')}.jpg)`
   titleEl.innerHTML = selectedPark;
   parkTitle.innerHTML = selectedPark;
   decodeHtml()
