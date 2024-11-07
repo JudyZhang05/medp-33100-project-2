@@ -82,7 +82,7 @@ function loadParks(parkList){
         
         const imgDiv = document.createElement('img');
         imgDiv.classList.add('park-image');
-        imgDiv.src = `/images/${pname.toLowerCase().split(' ').join('_')}.jpg`
+        imgDiv.src = (!pname.includes('&#x27;s')) ? `/images/${pname.toLowerCase().split(' ').join('_')}.jpg` : `/images/${pname.toLowerCase().split(' ').join('_').split('&#x27;s').join('s')}.jpg`
 
         const nameDiv = document.createElement('div');
         nameDiv.classList.add('park-name');
