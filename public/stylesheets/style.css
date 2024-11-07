@@ -77,6 +77,13 @@ header {
   background: none;
   padding: 5px 20px;
   border-radius: 10px;
+  transition: background-color color 200ms;
+}
+
+.join-today-button > button:hover {
+  background-color: white;
+  color: green;
+  cursor: pointer;
 }
 
 .container {
