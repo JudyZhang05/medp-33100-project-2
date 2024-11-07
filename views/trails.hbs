@@ -43,7 +43,6 @@
       <div class='see-more-content'>
         <h2>See More</h2>
 
-        {{! temp links }}
         <div class="change-content">
           <div>Prospect Park</div>
           <div>Wolfe's Pond Park</div>
@@ -89,9 +88,7 @@
     <script>
       let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
       let parkTrails = [{{#each trails}} [{{#each this}} {{this}}, {{/each}}], {{/each}}];
-      //let difficultyLevels = [{{#each trails_difficulty}} '{{this}}', {{/each}}];
       setUp()
-      //difficultPark()
     </script>
   </body>
 </html>
