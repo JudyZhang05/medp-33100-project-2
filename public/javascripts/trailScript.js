@@ -25,7 +25,7 @@ function countTrails(){ //count the number of trails in one park
 }
 
 function setUp(){ //setting the webpage 
-  bgHeader.style.backgroundImage = `url(/images/${selectedPark.toString().toLowerCase().split(' ').join('_')}.jpg)`
+  bgHeader.style.backgroundImage = `url(/images/${selectedPark.toString().toLowerCase().split(' ').join('_').split("'").join('')}.jpg)`
   titleEl.innerHTML = selectedPark;
   parkTitle.innerHTML = selectedPark;
   decodeHtml()
