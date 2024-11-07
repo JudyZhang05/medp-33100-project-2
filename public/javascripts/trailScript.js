@@ -10,8 +10,7 @@ const titleEl = document.querySelector('title');
 const parkTitle = document.querySelector('.park-information h1');
 const showDifficulty = document.querySelector('.show-difficulty');
 let otherParks = document.querySelectorAll('.change-content div');
-
-// const bargraph = document.querySelector('#bar-graph');
+const trailNum = document.querySelector('.show-difficulty p')
 
 let newParkName = []
 let parkIndex = -1;
@@ -21,10 +20,7 @@ function countTrails(){ //count the number of trails in one park
     for (num of parkTrails[parkIndex]){
         numberOfTrails += num;
     }
-}
-
-function difficultPark(){
-  console.log(difficultyLevels)
+    trailNum.innerHTML = `Explore ${numberOfTrails} trails in this park!`
 }
 
 function setUp(){ //setting the webpage
