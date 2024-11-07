@@ -79,13 +79,6 @@ otherParks.forEach((park) => { //right navigation bar
   })
 })
 
-// hide and show map and bar graph
-// function barGraphMap() {
-// }
-
-// plotBarGraph();
-
-
 const allButtons = document.querySelectorAll('.show-button');
 const allSections = document.querySelectorAll('.sections');
 allSections[0].style.display = 'block';
@@ -100,5 +93,3 @@ allButtons.forEach((button, index) => {
     }
   });
 });
-
-// barGraphMap();
