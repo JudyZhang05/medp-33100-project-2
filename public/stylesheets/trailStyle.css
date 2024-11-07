@@ -11,7 +11,7 @@
 
 body {
   display: grid;
-  grid-template-rows: 80vh 20vh 4vh 100vh;
+  grid-template-rows: 80vh 20vh 4vh 76vh;
   grid-template-columns: 20vw 60vw 20vw;
 }
 
@@ -174,5 +174,5 @@ a {
 }
 
 #bar-graph{
-  max-height: 75vh;
+  height: 100%;
 }
