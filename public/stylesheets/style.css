@@ -33,7 +33,10 @@ header {
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 20px;
-  background-image: url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background:linear-gradient(
+    rgba(0, 0, 0, 0.1), 
+    rgba(0, 0, 0, 0.7)
+  ), url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -74,6 +77,22 @@ header {
   background: none;
   padding: 5px 20px;
   border-radius: 10px;
+  transition: background-color color 200ms;
+}
+
+.join-today-button > button:hover {
+  background-color: white;
+  color: green;
+  cursor: pointer;
+}
+
+.container {
+  transition: all 250ms;
+}
+
+.container:hover {
+  transform: scale(1.05);
+  box-shadow: gray 10px 10px 10px;
 }
 
 .container,
@@ -104,6 +123,10 @@ header {
   width: 30vw;
   font-size: 1.5rem;
   padding: 5px 10px;
+}
+
+#search-bar {
+  outline: none;
 }
 
 .sort-by-section > label,

@@ -19,7 +19,7 @@
 
 - List the technologies and tools used in the project:
     - APIs: [NYC Open Data](https://data.cityofnewyork.us/Environment/Parks-Trails/vjbm-hsyr/about_data)
-    - Libraries: Express, Nodejs, hbs
+    - Libraries: Express, Nodejs, hbs, plotly
     - Other: Glitch, [Figma](https://www.figma.com/design/bbmSmSHDFp9uXzHssmW2Ey/MEDP331?node-id=21-2&node-type=canvas&t=Y1FCa60Xxhr3wuQR-0)
  
 ## **Live Demo**
