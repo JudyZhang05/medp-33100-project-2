@@ -62,12 +62,35 @@
       </div>
       <div id="show-map" class="sections">
         <section class='map'>
-          {{! map section. (You can put the map here) }}
-          <div>You can replace the this div with the map</div>
+         <div id="map"></div>
         </section>
       </div>
     </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set initial coordinates (change these to your desired location)
+        const lat = 51.505;
+        const lng = -0.09;
+        const zoom = 13;
+
+        // Create map instance
+        const map = L.map('map').setView([lat, lng], zoom);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Optional: Add a marker
+        L.marker([lat, lng]).addTo(map)
+            .bindPopup('Your location here!')
+            .openPopup();
+    });
+</script>
     <script src='/javascripts/trailScript.js'></script>
     <script>
       let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
