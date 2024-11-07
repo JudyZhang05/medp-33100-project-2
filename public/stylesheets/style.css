@@ -72,6 +72,11 @@ header {
   border-radius: 10px;
 }
 
+.container,
+.outer > img {
+  cursor: pointer;
+}
+
 .container > img {
   width: 100%;
 }
