@@ -62,28 +62,56 @@
         </section>
       </div>
     </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const lat = 74.006;
-        const lng = 40.71;
-        const zoom = 13;
+  document.addEventListener('DOMContentLoaded', function() {
+    const lat = 40.77;
+    const lng = -73.95;
+    const zoom = 10;
 
-        const map = L.map('map').setView([lat, lng], zoom);
+ 
+    const map = L.map('map').setView([lat, lng], zoom);
+    setTimeout(function(){ map.invalidateSize()}, 500);
 
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-      
-        L.marker([lat, lng]).addTo(map)
-            .bindPopup('Your location here!')
-            .openPopup();
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([lat, lng]).addTo(map).openPopup();
+
+   
+    L.Control.geocoder({
+      defaultMarkGeocode: false
+    })
+    .on('markgeocode', function(e) {
+      const bbox = e.geocode.bbox;
+      const poly = L.polygon([
+        bbox.getSouthEast(),
+        bbox.getNorthEast(),
+        bbox.getNorthWest(),
+        bbox.getSouthWest()
+      ]).addTo(map);
+      map.fitBounds(poly.getBounds());
+      L.marker(e.geocode.center).addTo(map).bindPopup(e.geocode.name).openPopup();
+    })
+    .addTo(map);
+
+    
+    const mapElement = document.getElementById('map');
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            map.invalidateSize();
+            observer.disconnect(); 
+        }
     });
+    observer.observe(mapElement);
+  });
 </script>
+
     <script src='/javascripts/trailScript.js'></script>
     <script>
       let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
