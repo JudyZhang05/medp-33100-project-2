@@ -62,6 +62,10 @@
         </section>
       </div>
     </div>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+
+<!-- Include Leaflet Control Geocoder CSS and JavaScript -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
@@ -111,7 +115,6 @@
     observer.observe(mapElement);
   });
 </script>
-
     <script src='/javascripts/trailScript.js'></script>
     <script>
       let parkName = [{{#each trails}} '{{@key}}', {{/each}}]
