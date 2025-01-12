@@ -25,7 +25,8 @@
  
 ## **Live Demo**
 
-- Include a link to the live version of the project hosted on Glitch.
+- Here is the link to the live version of the project hosted on Glitch.
+  - https://feelthegrove.glitch.me
 
 ## **Credits**
 
